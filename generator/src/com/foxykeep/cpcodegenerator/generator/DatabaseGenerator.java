@@ -356,7 +356,7 @@ public class DatabaseGenerator {
                             }
                             hasPreviousInsertDefaultValues = true;
 
-                            sbUpgradeTableInsertDefaultValues.append(FieldData
+                            sbUpgradeTableInsertDefaultValues.append(fieldData
                                     .getDefaultValue(fieldData.type));
                         }
                     }

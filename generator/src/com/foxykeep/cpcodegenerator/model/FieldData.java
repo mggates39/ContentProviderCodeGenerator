@@ -63,8 +63,10 @@ public class FieldData {
         this.type = type;
 
         if (type.equals("int") || type.equals("integer") || type.equals("long")
-                || type.equals("boolean") || type.equals("date")) {
+                || type.equals("boolean") ) {
             dbType = "integer";
+        } else if (type.equals("date") || type.equals("datetime")) {
+            dbType = "datetime";
         } else if (type.equals("float") || type.equals("double") || type.equals("real")) {
             dbType = "real";
         } else if (type.equals("string") || type.equals("text") || type.equals("String")) {
@@ -74,11 +76,19 @@ public class FieldData {
         }
     }
 
-    public static String getDefaultValue(final String type) {
+    public String getDefaultValue(final String type) {
         if (type.equals("string") || type.equals("text") || type.equals("String")) {
-            return "''";
+        	if (dbDefaultValue == null) {
+        		return "''";
+        	} else {
+        		return "'" + dbDefaultValue + "'";
+        	}
         } else {
-            return "-1";
+        	if (dbDefaultValue == null) {
+        		return "-1";
+        	} else {
+        		return dbDefaultValue;
+        	}            
         }
     }
 }

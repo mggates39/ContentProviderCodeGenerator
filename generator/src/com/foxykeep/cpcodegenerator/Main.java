@@ -37,6 +37,7 @@ public class Main {
                 sb.append(line).append("\n");
             }
             columnMetadataText = sb.toString();
+            br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return;
@@ -62,6 +63,7 @@ public class Main {
                         sb.append(buffer, 0, read);
                     }
                 } while (read >= 0);
+                in.close();
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
                 return;
